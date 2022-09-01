@@ -35,6 +35,12 @@ function TodoApp({ initialTodos }) {
   function remove(id) {
     setTodos(todos.filter(todo => todo.id !== id));
   }
+  
+  const initialFormData = {
+    title: "",
+    description: "",
+    priority: 1
+  }
 
   return (
     <main className="TodoApp">
@@ -57,7 +63,7 @@ function TodoApp({ initialTodos }) {
 
           <section>
             <h3 className="mb-3">Add Nü</h3>
-            <TodoForm initialFormData={} handleSave={create}/>
+            <TodoForm initialFormData={initialFormData} handleSave={create}/>
           </section>
         </div>
 
