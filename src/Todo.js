@@ -8,7 +8,7 @@ import React from "react";
  * { EditableTodo, TopTodo } -> Todo
  **/
 
-function Todo() {
+function Todo({ id, title, description, priority }) {
   return (
       <div className="Todo">
         <div><b>Title</b> <small>(priority: 1)</small></div>
