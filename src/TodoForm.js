@@ -25,10 +25,21 @@ function TodoForm({initialFormData=defaultFormData, handleSave}) {
     const fieldName = evt.target.name;
     const value = evt.target.value;
 
-    setFormData(currData => {
+    setFormData(currData => ({
+      ...currData,
+      [fieldName]: value
+    }));
+    
+    /** previous way:
+     * setFormData(currData => {
       currData[fieldName] = value;
-      return { ...currData };
+      return {...currData};
     });
+     */
+    
+    // this doesn't work because it will mutate the initial form data to have a value of value
+    // for a specific field. This makes it so that when the form is reset and formData is set to
+    // initialFormData, it will have a mutated field
   }
 
   /** Call parent function and clear form. */

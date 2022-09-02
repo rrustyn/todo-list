@@ -11,7 +11,7 @@
 function TextandButton({msg, handleClick, buttonText = "Click"}) {
   return (
     <div>
-      {msg ? <p>msg</p> : null}
+      {msg ? <p>{msg}</p> : null}
       <button onClick={handleClick}>
         {msg ? buttonText : "Click for an inspo quote" }
       </button>

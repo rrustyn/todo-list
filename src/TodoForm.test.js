@@ -32,18 +32,18 @@ describe("TodoForm works as intended", function () {
                 queryByDisplayValue,
                 getByLabelText,
                 container } = render(
-                <TodoForm handleSave={handleSave} />);
+                <TodoForm initialFormData={initialFormData} handleSave={handleSave} />);
         const titleInput = getByLabelText("Title");
         const descriptionInput = getByLabelText("Description");
                     
-        debug();
-        //console.log("1", initialFormData);
+        // debug();
+        console.log("1", initialFormData);
 
         fireEvent.change(titleInput, { target: { value: "such wow" } });
         fireEvent.change(descriptionInput, { target: { value: 'very nice' } });
         
-        debug();
-        //console.log("2", initialFormData);
+        // debug();
+        console.log("2", initialFormData);
 
         expect(queryByDisplayValue('such wow')).toBeInTheDocument();
         expect(queryByText('very nice')).toBeInTheDocument();
@@ -52,10 +52,13 @@ describe("TodoForm works as intended", function () {
         fireEvent.submit(form);
         
         debug();
-        //console.log("3", initialFormData);
+        console.log("3", initialFormData);
         
         expect(handleSave).toHaveBeenCalledTimes(1)
         expect(queryByDisplayValue('such wow')).not.toBeInTheDocument();
         expect(queryByText('very nice')).not.toBeInTheDocument();
+        
+        // Our problem was in the app, not our test. The form kept the first letter 
+        // of title for some reason
     });
 });
