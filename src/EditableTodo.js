@@ -14,7 +14,7 @@ import TodoForm from "./TodoForm";
 
 function EditableTodo({ todo, update, remove }) {
 
-  const { id, title, description, priority } = todo;
+  const { title, description, priority } = todo;
 
   /** Toggle if this is being edited */
 
@@ -44,7 +44,8 @@ function EditableTodo({ todo, update, remove }) {
 
   return (
     <div className="EditableTodo">
-      {showForm ? <TodoForm initialFormData={{ title, description, priority }} handleSave={handleSave} />
+      {showForm  
+        ? <TodoForm initialFormData={{ title, description, priority }} handleSave={handleSave} />
         : <div className="mb-3">
           <div className="float-end text-sm-end">
             <button
@@ -58,7 +59,7 @@ function EditableTodo({ todo, update, remove }) {
               Del
             </button>
           </div>
-          <Todo id={id} title={title} description={description} priority={priority} />
+          <Todo todo={todo} />
         </div>}
     </div>
   );
